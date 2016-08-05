@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGame.Project", "ChessG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{4ABDB2FF-772C-4D59-83ED-775EBE99CFBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{D287EF85-5266-485D-BDE3-7F47330469BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4ABDB2FF-772C-4D59-83ED-775EBE99CFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ABDB2FF-772C-4D59-83ED-775EBE99CFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ABDB2FF-772C-4D59-83ED-775EBE99CFBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D287EF85-5266-485D-BDE3-7F47330469BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D287EF85-5266-485D-BDE3-7F47330469BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D287EF85-5266-485D-BDE3-7F47330469BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D287EF85-5266-485D-BDE3-7F47330469BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
