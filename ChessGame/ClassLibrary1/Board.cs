@@ -8,6 +8,7 @@ namespace ClassLibrary1
 {
     public class Board
     {//Each position on the board will have a property and the property will be assigned a value indicating what's in that location.
+        
         public string a1 { get; set; }
         public string a2 { get; set; }
         public string a3 { get; set; }
