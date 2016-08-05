@@ -10,6 +10,7 @@ namespace ChessGame.Project
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
