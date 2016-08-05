@@ -11,7 +11,8 @@ namespace ChessGame.Project
     {
         static void Main(string[] args)
         {
-            Board board = new Board();
+            Board board = new Board(1);
+           
 
         }
     }
