@@ -8,7 +8,7 @@ namespace ClassLibrary1
 {
     public class Piece
     {
-        enum name
+        public enum name
         {
             king,
             rook,
@@ -17,9 +17,10 @@ namespace ClassLibrary1
             knight,
             pawn
         };
-        enum colour
+        public enum colour
         {
             black, white
         };
+        
     }
 }

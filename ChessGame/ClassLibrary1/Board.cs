@@ -9,11 +9,16 @@ namespace ClassLibrary1
     public class Board
     {   //Each position on the board will have a property and the property will be assigned a value indicating what's in that location.
 
-        int boolStandardSetup;
+        bool boolStandardSetup;
 
-        public Board(int _boolStandardSetup)
+        public Board(bool _boolStandardSetup)
         {
             _boolStandardSetup = boolStandardSetup;
+
+            //if (_boolStandardSetup)//Set up a standard layout of the board
+            //{
+                
+            //}
         }
 
         public Piece a1 { get; set; }
@@ -87,6 +92,7 @@ namespace ClassLibrary1
         public Piece h6 { get; set; }
         public Piece h7 { get; set; }
         public Piece h8 { get; set; }
+
 
 
     }
