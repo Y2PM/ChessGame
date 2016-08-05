@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    public interface IPiece
+    public class Piece
     {
         enum name
         {
