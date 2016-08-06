@@ -16,7 +16,7 @@ namespace ChessGame.Project
             piece1.name = Piece.Name.pawn;
 
 
-            string[] rowArray = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
+            string[] rowArray = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };//Make positions on a board.
             string[] colArray = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };
             int numberOfPositions = new int();
             numberOfPositions = rowArray.Length * colArray.Length;
@@ -46,7 +46,7 @@ namespace ChessGame.Project
             Console.ReadLine();
 
             /*
-            int j1 = new int();
+            int j1 = new int();//Print positions.
             j1 = 0;
             for (int j = 0; j < 8; j++)
             {
@@ -58,9 +58,6 @@ namespace ChessGame.Project
             }
             Console.ReadLine();
             */
-
-            //var piece = Piece.Colour.white;
-            //piece.
 
 
         }
