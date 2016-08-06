@@ -27,7 +27,7 @@ namespace ChessGame.Project
             {
                 for (int c = 0; c < colArray.Length; c++)
                 {
-                    positions[i++] = rowArray[r] + colArray[c];
+                    positions[i++] = colArray[c] + rowArray[r];
                 }
             }
 
