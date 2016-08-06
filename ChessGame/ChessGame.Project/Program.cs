@@ -27,15 +27,38 @@ namespace ChessGame.Project
             {
                 for (int c = 0; c < colArray.Length; c++)
                 {
-                    positions[i++] = rowArray[r]+colArray[c];
+                    positions[i++] = rowArray[r] + colArray[c];
                 }
             }
 
-            for (int j = 0; j < numberOfPositions; j++)
+
+
+            int j1 = new int();//Print positions with reversed rows (intuitive layout).
+            for (int j = 7; j > -1; j--)
             {
-                Console.WriteLine(positions[j]);
+                j1 = 8 * j;
+                for (int k = 0; k < 8; k++)
+                {
+                    Console.Write(positions[j1++] + " ");
+                }
+                Console.WriteLine();
             }
             Console.ReadLine();
+
+            /*
+            int j1 = new int();
+            j1 = 0;
+            for (int j = 0; j < 8; j++)
+            {
+                for (int k = 0; k < 8; k++)
+                {
+                    Console.Write(positions[j1++] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+            */
+
             //var piece = Piece.Colour.white;
             //piece.
 
