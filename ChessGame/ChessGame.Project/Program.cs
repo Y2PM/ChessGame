@@ -11,8 +11,13 @@ namespace ChessGame.Project
     {
         static void Main(string[] args)
         {
-            Board board = new Board(1);
-           
+            Piece piece1 = new Piece();
+            piece1.colour = Piece.Colour.white;
+            piece1.name = Piece.Name.pawn;
+
+            //var piece = Piece.Colour.white;
+            //piece.
+
 
         }
     }

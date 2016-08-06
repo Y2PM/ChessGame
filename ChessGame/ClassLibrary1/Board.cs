@@ -13,7 +13,7 @@ namespace ClassLibrary1
 
         public Board(bool _boolStandardSetup)
         {
-            _boolStandardSetup = boolStandardSetup;
+            boolStandardSetup = _boolStandardSetup;
 
             //if (_boolStandardSetup)//Set up a standard layout of the board
             //{
