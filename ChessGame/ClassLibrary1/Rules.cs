@@ -23,7 +23,7 @@ namespace ClassLibrary1
         int wkInitialRow;
         public Rules(int _wkInitialRow, string[] _positionsMap)
         {
-            wkInitialRow = _wkInitialRow;//whitekinginitialrow probably 1.
+            wkInitialRow = _wkInitialRow;//white king initial row probably 1.
             positionsMap = _positionsMap;
         }
 
@@ -35,15 +35,11 @@ namespace ClassLibrary1
                 int initialIndex = Array.IndexOf(positionsMap, initialPosition);
                 int finalIndex = Array.IndexOf(positionsMap, finalPosition);
 
-                //rules to check nothing in the way.
-                if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
-                {
-                    return false;
-                }
+                
 
 
                 //Make rule to say one step forward is allowed for a pawn.
-                if (finalIndex - initialIndex == 9)//one step forward
+                if (finalIndex - initialIndex == 8)//one step forward
                 {
                     //rules to check nothing in the way.
                     if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
@@ -52,14 +48,14 @@ namespace ClassLibrary1
                     }
                     return true;
                 }
-                if (finalIndex - initialIndex == 18)//two steps forward
+                if (finalIndex - initialIndex == 16)//two steps forward
                 {
                     //rules to check nothing in the way.
                     if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
                     {
                         return false;
                     }
-                    string positionHalfway = positionsMap[initialIndex + 9];
+                    string positionHalfway = positionsMap[initialIndex + 8];
                     if (positions[positionHalfway].name != Piece.Name.g)//check if a piece is in the way.
                     {
                         return false;
@@ -67,7 +63,7 @@ namespace ClassLibrary1
                     return true;
                 }
                 //in the case of taking diagonally:
-                if ((finalIndex - initialIndex == 8 || finalIndex - initialIndex == 10) && positions[finalPosition].name != Piece.Name.g)
+                if ((finalIndex - initialIndex == 7 || finalIndex - initialIndex == 9) && positions[finalPosition].name != Piece.Name.g)
                 {
                     return true;
                 }

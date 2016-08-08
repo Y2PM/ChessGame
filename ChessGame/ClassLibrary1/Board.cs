@@ -10,6 +10,7 @@ namespace ClassLibrary1
     {
         Dictionary<string, Piece> positions;
         static string[] positionsMap;
+        int wkInitialRow;
         Piece p;
         public Board()
         {
@@ -18,8 +19,9 @@ namespace ClassLibrary1
             _p.name = Piece.Name.g;//ghost
             positions = positionsMethod(_p);//gets the board
             p = _p;
-            int wkInitialRow = new int();//initial row of the white king to indicate setup.
-            wkInitialRow = 1;
+            int _wkInitialRow = new int();//initial row of the white king to indicate setup.
+            _wkInitialRow = 1;
+            wkInitialRow = _wkInitialRow;
             setupBoard(positions, wkInitialRow);//puts pieces on the board
         }
 
@@ -46,17 +48,25 @@ namespace ClassLibrary1
             return _positions;
         }
 
-        public int move(string initialPosition, string finalPosition)
+        public void move(string initialPosition, string finalPosition)
         {
             //is it a valid move?
             //use a rules class method
-
+            Rules rules = new Rules(wkInitialRow, positionsMap);
+            bool valid = rules.testMoveIsValid(positions, initialPosition, finalPosition);
             //do the move if valid
-            Piece piece = new Piece();
-            piece = positions[initialPosition];
-            positions[initialPosition] = p;
-            positions[finalPosition] = piece;
-            return 1;
+            if (valid)
+            {
+                Piece piece = new Piece();
+                piece = positions[initialPosition];
+                positions[initialPosition] = p;
+                positions[finalPosition] = piece;
+            }
+            else
+            {
+                Console.WriteLine("Invalid move.");
+            }
+
         }
 
         public void printPositionsAndPieces()
