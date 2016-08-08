@@ -13,7 +13,7 @@ namespace ChessGame.Project
         {
             #region Lets try it out
             //
-            
+            /*
             string moves = "";
             Board board = new Board();
             while (moves != "exit")
@@ -31,10 +31,12 @@ namespace ChessGame.Project
             
             Console.WriteLine("Thankyou come again.");
             Console.ReadLine();
-            
+            */
             // 
             #endregion
 
+            Board board2 = new Board();
+            board2.printPositionsAndPieces();
 
 
         }

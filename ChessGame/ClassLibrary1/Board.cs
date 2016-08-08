@@ -9,6 +9,7 @@ namespace ClassLibrary1
     public class Board
     {
         Dictionary<string, Piece> positions;
+        static string[] positionsMap;
         Piece p;
         public Board()
         {
@@ -17,7 +18,7 @@ namespace ClassLibrary1
             _p.name = Piece.Name.g;//ghost
             positions = positionsMethod(_p);//gets the board
             p = _p;
-            int wkInitialRow = new int();
+            int wkInitialRow = new int();//initial row of the white king to indicate setup.
             wkInitialRow = 1;
             setupBoard(positions, wkInitialRow);//puts pieces on the board
         }
@@ -30,13 +31,18 @@ namespace ClassLibrary1
             int numberOfPositions = new int();
             numberOfPositions = rowArray.Length * colArray.Length;
             Dictionary<string, Piece> _positions = new Dictionary<string, Piece>(numberOfPositions);
+            string[] _positionsMap = new string[numberOfPositions];
+            int j = new int();
+            j = 0;
             for (int r = 0; r < rowArray.Length; r++)
             {
                 for (int c = 0; c < colArray.Length; c++)
                 {
                     _positions.Add(colArray[c] + rowArray[r], _p);
+                    _positionsMap[j++] = colArray[c] + rowArray[r];
                 }
             }
+            positionsMap = _positionsMap;
             return _positions;
         }
 
