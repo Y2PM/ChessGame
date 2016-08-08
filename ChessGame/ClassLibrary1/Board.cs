@@ -15,7 +15,8 @@ namespace ClassLibrary1
         {
             //Make positions on a board.
             Piece p = new Piece();
-            p.name = Piece.Name.ghost;
+            p.name = Piece.Name.g;
+            p.colour = Piece.Colour.w;
             string[] rowArray = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
             string[] colArray = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };//create the array.
             int numberOfPositions = new int();
@@ -31,12 +32,25 @@ namespace ClassLibrary1
             }
             positions = _positions;
 
-
+            SetupBoard(positions);
 
 
         }
 
-
+        public void printPositionsAndPieces()
+        {
+            int j1 = new int();//Print positions with reversed rows (intuitive layout).
+            for (int j = 7; j > -1; j--)//print the array.
+            {
+                j1 = 8 * j;
+                for (int k = 0; k < 8; k++)
+                {
+                    Console.Write((positions.ElementAt(j1).Key + " " + positions.ElementAt(j1).Value.colour +" "+ positions.ElementAt(j1++).Value.name+" ").PadRight(16));
+                }
+                Console.WriteLine();
+            }
+            Console.ReadLine();
+        }
 
         public void PrintPositions()
         {
@@ -69,7 +83,7 @@ namespace ClassLibrary1
         }
 
         //Make pieces to put on the board
-        static void SetupBoard()
+        static void SetupBoard(Dictionary<string, Piece> positions)
         {
 
             #region White pieces
@@ -151,6 +165,55 @@ namespace ClassLibrary1
             bke.name = Piece.Name.king;
             bke.colour = Piece.Colour.black;
             #endregion
+
+            #region Position white pieces
+            positions["a2"]= wpa;//pawns
+            positions["b2"]= wpb;
+            positions["c2"]= wpc;
+            positions["d2"]= wpd;
+            positions["e2"]= wpe;
+            positions["f2"]= wpf;
+            positions["g2"]= wpg;
+            positions["h2"]= wph;
+                    
+            positions["a1"]= wra;//rooks
+            positions["h1"]= wrh;
+                     
+            positions["b1"]= wkb;//knights
+            positions["g1"]= wkg;
+                     
+            positions["c1"]= wbc;//bishops
+            positions["f1"]= wbf;
+                    
+            positions["d1"]= wqd;//queen
+                    
+            positions["e1"]= wke;//king
+            #endregion
+
+            #region Position black pieces
+            positions["a7"]= bpa;//pawns
+            positions["b7"]= bpb;
+            positions["c7"]= bpc;
+            positions["d7"]= bpd;
+            positions["e7"]= bpe;
+            positions["f7"]= bpf;
+            positions["g7"]= bpg;
+            positions["h7"]= bph;
+                          
+            positions["a8"]= bra;//rooks
+            positions["h8"]= brh;
+                          
+            positions["b8"]= bkb;//knights
+            positions["g8"]= bkg;
+                          
+            positions["c8"]= bbc;//bishops
+            positions["f8"]= bbf;
+                    
+            positions["d8"]= bqd;//queen
+                    
+            positions["e8"]= bke;//king
+            #endregion
+
 
         }
 

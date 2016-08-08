@@ -19,11 +19,11 @@ namespace ClassLibrary1
             queen,
             knight,
             pawn,
-            ghost//ghost piece represents no piece in the board dictionary
+            g//ghost piece represents no piece in the board dictionary
         };
         public enum Colour
         {
-            black, white
+            black, white, w//a ghost is white
         };
 
         public object Clone()

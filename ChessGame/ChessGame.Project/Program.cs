@@ -16,7 +16,7 @@ namespace ChessGame.Project
             piece1.name = Piece.Name.pawn;
 
             Board board = new Board();
-            board.PrintPositions();
+            board.printPositionsAndPieces();
 
 
             #region MyRegion
