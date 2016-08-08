@@ -17,7 +17,9 @@ namespace ClassLibrary1
             _p.name = Piece.Name.g;//ghost
             positions = positionsMethod(_p);//gets the board
             p = _p;
-            setupBoard(positions);//puts pieces on the board
+            int wkInitialRow = new int();
+            wkInitialRow = 1;
+            setupBoard(positions, wkInitialRow);//puts pieces on the board
         }
 
         static Dictionary<string, Piece> positionsMethod(Piece _p)
@@ -97,8 +99,11 @@ namespace ClassLibrary1
         }
 
         //Makes pieces and puts them on the board
-        static void setupBoard(Dictionary<string, Piece> positions)
+        static void setupBoard(Dictionary<string, Piece> positions, int wkInitialRow)
         {
+            //assume a parameter exists to specify side white king is on at initial setup,
+            //is it on row 8 or row 1? e.g.
+            //wkInitialRow = 1;
 
             #region White pieces
             Piece wpa = new Piece();//white pawn a.
