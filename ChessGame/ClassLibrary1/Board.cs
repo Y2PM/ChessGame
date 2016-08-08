@@ -10,13 +10,14 @@ namespace ClassLibrary1
     {
 
         Dictionary<string, Piece> positions;
+        Piece p;
 
         public Board()
         {
             //Make positions on a board.
-            Piece p = new Piece();
-            p.name = Piece.Name.g;
-            p.colour = Piece.Colour.w;
+            Piece _p = new Piece();
+            _p.name = Piece.Name.g;
+            _p.colour = Piece.Colour.w;
             string[] rowArray = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
             string[] colArray = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };//create the array.
             int numberOfPositions = new int();
@@ -26,15 +27,40 @@ namespace ClassLibrary1
             {
                 for (int c = 0; c < colArray.Length; c++)
                 {
-
-                    _positions.Add(colArray[c] + rowArray[r], p);
+                    _positions.Add(colArray[c] + rowArray[r], _p);
                 }
             }
             positions = _positions;
+            p = _p;
 
-            SetupBoard(positions);
+            setupBoard(positions);
 
 
+        }
+
+        public int move(string initialPosition, string finalPosition)
+        {
+
+            if (initialPosition == finalPosition)//is it moving to the same place it already is?
+            {
+                return 0;
+            }
+            //is it trying to take a piece or just moving?
+            if (!positions[finalPosition].name.Equals(p))//if the desstination is not empty
+            {
+
+            }
+            
+
+            //is it a valid move?
+
+
+            //do the move if valid
+            Piece piece = new Piece();
+            piece = positions[initialPosition];
+            positions[initialPosition] = p;
+            positions[finalPosition] = piece;
+            return 1;
         }
 
         public void printPositionsAndPieces()
@@ -45,14 +71,14 @@ namespace ClassLibrary1
                 j1 = 8 * j;
                 for (int k = 0; k < 8; k++)
                 {
-                    Console.Write((positions.ElementAt(j1).Key + " " + positions.ElementAt(j1).Value.colour +" "+ positions.ElementAt(j1++).Value.name+" ").PadRight(16));
+                    Console.Write((positions.ElementAt(j1).Key + " " + positions.ElementAt(j1).Value.colour + " " + positions.ElementAt(j1++).Value.name + " ").PadRight(16));
                 }
                 Console.WriteLine();
             }
             Console.ReadLine();
         }
 
-        public void PrintPositions()
+        public void printPositions()
         {
             int j1 = new int();//Print positions with reversed rows (intuitive layout).
             for (int j = 7; j > -1; j--)//print the array.
@@ -67,7 +93,7 @@ namespace ClassLibrary1
             Console.ReadLine();
         }
 
-        public void PrintPositionsFrom0thElement()
+        public void printPositionsFrom0thElement()
         {
             int j1 = new int();//Print positions.
             j1 = 0;
@@ -82,8 +108,8 @@ namespace ClassLibrary1
             Console.ReadLine();
         }
 
-        //Make pieces to put on the board
-        static void SetupBoard(Dictionary<string, Piece> positions)
+        //Makes pieces and puts them on the board
+        static void setupBoard(Dictionary<string, Piece> positions)
         {
 
             #region White pieces
@@ -167,51 +193,51 @@ namespace ClassLibrary1
             #endregion
 
             #region Position white pieces
-            positions["a2"]= wpa;//pawns
-            positions["b2"]= wpb;
-            positions["c2"]= wpc;
-            positions["d2"]= wpd;
-            positions["e2"]= wpe;
-            positions["f2"]= wpf;
-            positions["g2"]= wpg;
-            positions["h2"]= wph;
-                    
-            positions["a1"]= wra;//rooks
-            positions["h1"]= wrh;
-                     
-            positions["b1"]= wkb;//knights
-            positions["g1"]= wkg;
-                     
-            positions["c1"]= wbc;//bishops
-            positions["f1"]= wbf;
-                    
-            positions["d1"]= wqd;//queen
-                    
-            positions["e1"]= wke;//king
+            positions["a2"] = wpa;//pawns
+            positions["b2"] = wpb;
+            positions["c2"] = wpc;
+            positions["d2"] = wpd;
+            positions["e2"] = wpe;
+            positions["f2"] = wpf;
+            positions["g2"] = wpg;
+            positions["h2"] = wph;
+
+            positions["a1"] = wra;//rooks
+            positions["h1"] = wrh;
+
+            positions["b1"] = wkb;//knights
+            positions["g1"] = wkg;
+
+            positions["c1"] = wbc;//bishops
+            positions["f1"] = wbf;
+
+            positions["d1"] = wqd;//queen
+
+            positions["e1"] = wke;//king
             #endregion
 
             #region Position black pieces
-            positions["a7"]= bpa;//pawns
-            positions["b7"]= bpb;
-            positions["c7"]= bpc;
-            positions["d7"]= bpd;
-            positions["e7"]= bpe;
-            positions["f7"]= bpf;
-            positions["g7"]= bpg;
-            positions["h7"]= bph;
-                          
-            positions["a8"]= bra;//rooks
-            positions["h8"]= brh;
-                          
-            positions["b8"]= bkb;//knights
-            positions["g8"]= bkg;
-                          
-            positions["c8"]= bbc;//bishops
-            positions["f8"]= bbf;
-                    
-            positions["d8"]= bqd;//queen
-                    
-            positions["e8"]= bke;//king
+            positions["a7"] = bpa;//pawns
+            positions["b7"] = bpb;
+            positions["c7"] = bpc;
+            positions["d7"] = bpd;
+            positions["e7"] = bpe;
+            positions["f7"] = bpf;
+            positions["g7"] = bpg;
+            positions["h7"] = bph;
+
+            positions["a8"] = bra;//rooks
+            positions["h8"] = brh;
+
+            positions["b8"] = bkb;//knights
+            positions["g8"] = bkg;
+
+            positions["c8"] = bbc;//bishops
+            positions["f8"] = bbf;
+
+            positions["d8"] = bqd;//queen
+
+            positions["e8"] = bke;//king
             #endregion
 
 

@@ -23,7 +23,9 @@ namespace ClassLibrary1
         };
         public enum Colour
         {
-            black, white, w//a ghost is white
+            black,
+            white,
+            w//ghosts are white
         };
 
         public object Clone()
