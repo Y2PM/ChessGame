@@ -8,16 +8,21 @@ namespace ClassLibrary1
 {
     public class Board
     {
-
         Dictionary<string, Piece> positions;
         Piece p;
-
         public Board()
         {
-            //Make positions on a board.
             Piece _p = new Piece();
-            _p.name = Piece.Name.g;
-            _p.colour = Piece.Colour.w;
+            _p.colour = Piece.Colour.w;//white
+            _p.name = Piece.Name.g;//ghost
+            positions = positionsMethod(_p);//gets the board
+            p = _p;
+            setupBoard(positions);//puts pieces on the board
+        }
+
+        static Dictionary<string, Piece> positionsMethod(Piece _p)
+        {
+            //Make positions on a board.
             string[] rowArray = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
             string[] colArray = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };//create the array.
             int numberOfPositions = new int();
@@ -30,30 +35,13 @@ namespace ClassLibrary1
                     _positions.Add(colArray[c] + rowArray[r], _p);
                 }
             }
-            positions = _positions;
-            p = _p;
-
-            setupBoard(positions);
-
-
+            return _positions;
         }
 
         public int move(string initialPosition, string finalPosition)
         {
-
-            if (initialPosition == finalPosition)//is it moving to the same place it already is?
-            {
-                return 0;
-            }
-            //is it trying to take a piece or just moving?
-            if (!positions[finalPosition].name.Equals(p))//if the desstination is not empty
-            {
-
-            }
-            
-
             //is it a valid move?
-
+            //use a rules class method
 
             //do the move if valid
             Piece piece = new Piece();
