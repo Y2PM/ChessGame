@@ -9,25 +9,32 @@ namespace ClassLibrary1
     public class Board
     {
 
-        string[] positions;
+        Dictionary<string, Piece> positions;
 
         public Board()
         {
-            string[] rowArray = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };//Make positions on a board.
+            //Make positions on a board.
+            Piece p = new Piece();
+            string[] rowArray = new string[8] { "1", "2", "3", "4", "5", "6", "7", "8" };
             string[] colArray = new string[8] { "a", "b", "c", "d", "e", "f", "g", "h" };//create the array.
             int numberOfPositions = new int();
             numberOfPositions = rowArray.Length * colArray.Length;
-            string[] _positions = new string[numberOfPositions];
-            int i = new int();
-            i = 0;//Don't need to set to 0 as it's default value.
+            Dictionary<string, Piece> _positions = new Dictionary<string, Piece>(numberOfPositions);
+            //int i = new int();
+            //i = 0;//Don't need to set to 0 as it's default value.
             for (int r = 0; r < rowArray.Length; r++)
             {
                 for (int c = 0; c < colArray.Length; c++)
                 {
-                    _positions[i++] = colArray[c] + rowArray[r];
+                  
+                    _positions.Add(colArray[c] + rowArray[r], p);
                 }
             }
             positions = _positions;
+
+
+
+
         }
 
 
@@ -40,7 +47,7 @@ namespace ClassLibrary1
                 j1 = 8 * j;
                 for (int k = 0; k < 8; k++)
                 {
-                    Console.Write(positions[j1++] + " ");
+                    Console.Write(positions.ElementAt(j1++).Key + " ");
                 }
                 Console.WriteLine();
             }
@@ -55,12 +62,23 @@ namespace ClassLibrary1
             {
                 for (int k = 0; k < 8; k++)
                 {
-                    Console.Write(positions[j1++] + " ");
+                    Console.Write(positions.ElementAt(j1++).Key + " ");
                 }
                 Console.WriteLine();
             }
             Console.ReadLine();
         }
+        /*
+        //Make pieces to put on the board
+        public Dictionary<string,Piece> SetupBoard()
+        {
+            Piece wpa = new Piece();//white pawn a.
+            wpa.name = Piece.Name.pawn;
+            wpa.colour = Piece.Colour.white;
+
+
+        }
+        */
 
 
 
