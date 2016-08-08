@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    public class Piece
+    public class Piece : ICloneable
     {
         public Name name { get; set; }
         public Colour colour { get; set; }
@@ -18,13 +18,18 @@ namespace ClassLibrary1
             bishop,
             queen,
             knight,
-            pawn
+            pawn,
+            ghost//ghost piece represents no piece in the board dictionary
         };
         public enum Colour
         {
             black, white
         };
-        
+
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
     
 }
