@@ -69,7 +69,7 @@ namespace ClassLibrary1
             }
             #endregion
 
-            /*
+
             #region Black pawn rules
             if (positions[initialPosition].name == Piece.Name.pawn && positions[initialPosition].colour == Piece.Colour.black)
             {
@@ -77,7 +77,7 @@ namespace ClassLibrary1
                 int finalIndex = Array.IndexOf(positionsMap, finalPosition);
 
                 //Make rule to say one step forward is allowed for a pawn.
-                if (finalIndex - initialIndex == 8)//one step forward
+                if (finalIndex - initialIndex == -8)//one step forward
                 {
                     //rules to check nothing in the way.
                     if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
@@ -86,14 +86,14 @@ namespace ClassLibrary1
                     }
                     return true;
                 }
-                if (finalIndex - initialIndex == 16)//two steps forward
+                if (finalIndex - initialIndex == -16)//two steps forward
                 {
                     //rules to check nothing in the way.
                     if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
                     {
                         return false;
                     }
-                    string positionHalfway = positionsMap[initialIndex + 8];
+                    string positionHalfway = positionsMap[initialIndex - 8];
                     if (positions[positionHalfway].name != Piece.Name.g)//check if a piece is in the way.
                     {
                         return false;
@@ -101,13 +101,13 @@ namespace ClassLibrary1
                     return true;
                 }
                 //in the case of taking diagonally:
-                if ((finalIndex - initialIndex == 7 || finalIndex - initialIndex == 9) && positions[finalPosition].name != Piece.Name.g)
+                if ((finalIndex - initialIndex == -7 || finalIndex - initialIndex == -9) && positions[finalPosition].colour == Piece.Colour.white)
                 {
                     return true;
                 }
             }
             #endregion
-    */
+
 
             if (positions[initialPosition].name == Piece.Name.rook)
             {

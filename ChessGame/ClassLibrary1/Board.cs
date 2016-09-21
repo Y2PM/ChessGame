@@ -10,10 +10,14 @@ namespace ClassLibrary1
     {
         Dictionary<string, Piece> positions;
         static string[] positionsMap;
+        public int movenumber { get; set; }
+
+        public Dictionary<string, Piece> moveHistory { get; set; }
         int wkInitialRow;
         Piece p;
         public Board()
         {
+            Dictionary<string, Piece> _moveHistory = new Dictionary<string, Piece>();//"<This piece, has done this move>".
             Piece _p = new Piece();
             _p.colour = Piece.Colour.w;//white
             _p.name = Piece.Name.g;//ghost
@@ -22,6 +26,9 @@ namespace ClassLibrary1
             int _wkInitialRow = new int();//initial row of the white king to indicate setup.
             _wkInitialRow = 1;
             wkInitialRow = _wkInitialRow;
+            moveHistory = _moveHistory;
+            int _movenumber = new int();
+            movenumber = _movenumber;
             setupBoard(positions, wkInitialRow);//puts pieces on the board
         }
 
@@ -50,6 +57,7 @@ namespace ClassLibrary1
 
         public void move(string initialPosition, string finalPosition)
         {
+
             //is it a valid move?
             //use a rules class method
             Rules rules = new Rules(wkInitialRow, positionsMap);
@@ -61,6 +69,7 @@ namespace ClassLibrary1
                 piece = positions[initialPosition];
                 positions[initialPosition] = p;
                 positions[finalPosition] = piece;
+                moveHistory.Add(initialPosition + finalPosition + " " + movenumber++, piece);
             }
             else
             {
