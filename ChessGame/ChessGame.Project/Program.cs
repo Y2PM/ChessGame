@@ -11,6 +11,7 @@ namespace ChessGame.Project
     {
         static void Main(string[] args)
         {
+            
             #region Lets try it out
             //
             
@@ -35,11 +36,12 @@ namespace ChessGame.Project
             
             // 
             #endregion
+            
 
             /*
             Board board2 = new Board();
-            board2.printPositionsAndPieces();
-            //board2.printPositionsFrom0thElement();
+            //board2.printPositionsAndPieces();
+            board2.printPositionsFrom0thElement();
             */
         }
     }

@@ -29,14 +29,52 @@ namespace ClassLibrary1
 
         public bool testMoveIsValid(Dictionary<string, Piece> positions, string initialPosition, string finalPosition)
         {
-            if (positions[initialPosition].name == Piece.Name.pawn)
-            {
 
+
+            #region White pawn rules
+            if (positions[initialPosition].name == Piece.Name.pawn && positions[initialPosition].colour == Piece.Colour.white)
+            {
                 int initialIndex = Array.IndexOf(positionsMap, initialPosition);
                 int finalIndex = Array.IndexOf(positionsMap, finalPosition);
 
-                
+                //Make rule to say one step forward is allowed for a pawn.
+                if (finalIndex - initialIndex == 8)//one step forward
+                {
+                    //rules to check nothing in the way.
+                    if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+                if (finalIndex - initialIndex == 16)//two steps forward
+                {
+                    //rules to check nothing in the way.
+                    if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
+                    {
+                        return false;
+                    }
+                    string positionHalfway = positionsMap[initialIndex + 8];
+                    if (positions[positionHalfway].name != Piece.Name.g)//check if a piece is in the way.
+                    {
+                        return false;
+                    }
+                    return true;
+                }
+                //in the case of taking diagonally:
+                if ((finalIndex - initialIndex == 7 || finalIndex - initialIndex == 9) && positions[finalPosition].colour == Piece.Colour.black)
+                {
+                    return true;
+                }
+            }
+            #endregion
 
+            /*
+            #region Black pawn rules
+            if (positions[initialPosition].name == Piece.Name.pawn && positions[initialPosition].colour == Piece.Colour.black)
+            {
+                int initialIndex = Array.IndexOf(positionsMap, initialPosition);
+                int finalIndex = Array.IndexOf(positionsMap, finalPosition);
 
                 //Make rule to say one step forward is allowed for a pawn.
                 if (finalIndex - initialIndex == 8)//one step forward
@@ -67,9 +105,10 @@ namespace ClassLibrary1
                 {
                     return true;
                 }
-
-
             }
+            #endregion
+    */
+
             if (positions[initialPosition].name == Piece.Name.rook)
             {
 
