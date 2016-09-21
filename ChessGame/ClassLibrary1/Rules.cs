@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    public class Rules//everything here that is stated as allowed is allowed and the rest isnt allowed.
+    public class Rules//everything here that is stated as allowed is allowed and the rest isn't allowed.
     {
         /*
         Dictionary<string, Piece> positions;

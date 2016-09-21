@@ -30,6 +30,7 @@ namespace ChessGame.Project
             }
             
             Console.WriteLine("Thankyou come again.");
+            Console.WriteLine("Press enter to close window.");
             Console.ReadLine();
             
             // 
@@ -38,8 +39,8 @@ namespace ChessGame.Project
             /*
             Board board2 = new Board();
             board2.printPositionsAndPieces();
+            //board2.printPositionsFrom0thElement();
             */
-
         }
     }
 }
