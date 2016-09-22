@@ -94,7 +94,7 @@ namespace ClassLibrary1
                 }
                 if (finalIndex - initialIndex == -16)//two steps forward
                 {
-                    if (initialPosition[1].Equals("7") == false)
+                    if (initialPosition[1].ToString().Equals("7") == false)
                     {
                         return false;
                     }
