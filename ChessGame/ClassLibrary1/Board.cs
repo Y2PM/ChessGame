@@ -100,7 +100,7 @@ namespace ClassLibrary1
                 Console.WriteLine("Invalid move.");
             }
 
-            if (valid!=0)//Move piece & Record move.
+            if (valid != 0)//Move piece & Record move.
             {
                 piece = positions[initialPosition];
                 positions[initialPosition] = p;

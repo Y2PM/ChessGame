@@ -97,15 +97,15 @@ namespace ClassLibrary1
                     {
                         if (positions[positionsMap[initialIndex - 1]].name == Piece.Name.pawn && positions[positionsMap[initialIndex - 1]].colour == Piece.Colour.black)
                         {
-                            
+
                             MoveDetails predictedLastMove = new MoveDetails();//Predicted last move in the case of moving 2 spaces forward for En passant.
                             predictedLastMove.fpos = positionsMap[initialIndex - 1];
                             predictedLastMove.ipos = positionsMap[initialIndex + 15];
-                            
+
                             MoveDetails actualLastMove = new MoveDetails();
                             actualLastMove.fpos = movesAndNumbers[lastMoveNum].Substring(2, 2);
                             actualLastMove.ipos = movesAndNumbers[lastMoveNum].Substring(0, 2);
-                            
+
                             if (predictedLastMove.fpos == actualLastMove.fpos && predictedLastMove.ipos == actualLastMove.ipos)
                             {
                                 return 2;
