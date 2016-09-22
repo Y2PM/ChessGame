@@ -127,7 +127,7 @@ namespace ClassLibrary1
                 }
                 Console.WriteLine();
             }
-            Console.ReadLine();
+            //Console.ReadLine();
         }
 
         public void printPositions()

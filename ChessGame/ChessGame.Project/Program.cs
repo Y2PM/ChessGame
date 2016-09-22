@@ -1,9 +1,5 @@
 ﻿using ClassLibrary1;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChessGame.Project
 {
@@ -59,8 +55,11 @@ namespace ChessGame.Project
             Board board = new Board();
             while (moves != "exit")
             {
-                Console.WriteLine("Press enter for further instructions.");
                 board.printPositionsAndPieces();
+                Console.WriteLine();
+                Console.WriteLine("Press enter for further instructions.");
+                
+                Console.ReadLine();
                 Console.WriteLine("To move a piece input the initial and final positions respectively then press enter, e.g. a2a4. To exit input exit then enter.");
                 moves = Console.ReadLine().PadRight(4);
                 if (moves != "exit")
