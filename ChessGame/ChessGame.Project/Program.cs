@@ -11,7 +11,23 @@ namespace ChessGame.Project
     {
         static void Main(string[] args)
         {
+            /*
+            string str1 = "abc";
+            string str2 = "c";
+            
+            Console.WriteLine(str1[2]);
+            Console.WriteLine(str2);
+            Console.WriteLine(str1[2].ToString().Equals(str2));
+            Console.ReadLine();
+            */
 
+            /*
+            string str1 = "abc";
+            Console.WriteLine(str1[2]);
+            Console.ReadLine();
+            */
+
+            
             #region Lets try it out
             //
 
@@ -34,14 +50,14 @@ namespace ChessGame.Project
             Console.WriteLine("The moves were: ");
             foreach (var item in board.moveHistory)
             {
-                Console.WriteLine(item.Value.colour + " " + item.Value.name + " " + item.Key);
+                Console.WriteLine(item.Value.colour + " " + item.Value.name + " " + item.Key.ipos + item.Key.fpos +" "+item.Key.movenum);
             }
             Console.WriteLine("Press enter to close window.");
             Console.ReadLine();
 
             // 
             #endregion
-
+            
 
             /*
             Board board2 = new Board();

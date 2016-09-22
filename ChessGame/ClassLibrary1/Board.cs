@@ -10,14 +10,15 @@ namespace ClassLibrary1
     {
         Dictionary<string, Piece> positions;
         static string[] positionsMap;
-        public int movenumber { get; set; }
-
-        public Dictionary<string, Piece> moveHistory { get; set; }
+        int movenumber;
+        
+        public Dictionary<MoveDetails, Piece> moveHistory { get; set; }
         int wkInitialRow;
         Piece p;
         public Board()
         {
-            Dictionary<string, Piece> _moveHistory = new Dictionary<string, Piece>();//"<This piece, has done this move>".
+            
+            Dictionary<MoveDetails, Piece> _moveHistory = new Dictionary<MoveDetails, Piece>();//"<This piece, has done this move>".
             Piece _p = new Piece();
             _p.colour = Piece.Colour.w;//white
             _p.name = Piece.Name.g;//ghost
@@ -28,7 +29,8 @@ namespace ClassLibrary1
             wkInitialRow = _wkInitialRow;
             moveHistory = _moveHistory;
             int _movenumber = new int();
-            movenumber = _movenumber;
+            movenumber = _movenumber;//
+            
             setupBoard(positions, wkInitialRow);//puts pieces on the board
         }
 
@@ -60,7 +62,7 @@ namespace ClassLibrary1
 
             //is it a valid move?
             //use a rules class method
-            Rules rules = new Rules(wkInitialRow, positionsMap);
+            Rules rules = new Rules(wkInitialRow, positionsMap, moveHistory);
             bool valid = rules.testMoveIsValid(positions, initialPosition, finalPosition);
             //do the move if valid
             if (valid)
@@ -69,7 +71,13 @@ namespace ClassLibrary1
                 piece = positions[initialPosition];
                 positions[initialPosition] = p;
                 positions[finalPosition] = piece;
-                moveHistory.Add(initialPosition + finalPosition + " " + movenumber++, piece);
+
+                MoveDetails moveDetails = new MoveDetails();
+                moveDetails.fpos = finalPosition;
+                moveDetails.ipos = initialPosition;
+                moveDetails.movenum = movenumber++;
+
+                moveHistory.Add(moveDetails, piece);
             }
             else
             {

@@ -21,10 +21,12 @@ namespace ClassLibrary1
         */
         string[] positionsMap;
         int wkInitialRow;
-        public Rules(int _wkInitialRow, string[] _positionsMap)
+        Dictionary<MoveDetails, Piece> moveHistory;
+        public Rules(int _wkInitialRow, string[] _positionsMap, Dictionary<MoveDetails, Piece> _moveHistory)
         {
             wkInitialRow = _wkInitialRow;//white king initial row probably 1.
             positionsMap = _positionsMap;
+            moveHistory = _moveHistory;
         }
 
         public bool testMoveIsValid(Dictionary<string, Piece> positions, string initialPosition, string finalPosition)
@@ -49,6 +51,10 @@ namespace ClassLibrary1
                 }
                 if (finalIndex - initialIndex == 16)//two steps forward
                 {
+                    if (initialPosition[1].ToString().Equals("2") == false)
+                    {
+                        return false;
+                    }
                     //rules to check nothing in the way.
                     if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
                     {
@@ -88,6 +94,10 @@ namespace ClassLibrary1
                 }
                 if (finalIndex - initialIndex == -16)//two steps forward
                 {
+                    if (initialPosition[1].Equals("7") == false)
+                    {
+                        return false;
+                    }
                     //rules to check nothing in the way.
                     if (positions[finalPosition].name != Piece.Name.g)//final position check, for move forward.
                     {
