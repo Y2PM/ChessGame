@@ -79,7 +79,7 @@ namespace ClassLibrary1
 
                 moveHistory.Add(moveDetails, piece);
             }
-            if (valid == 2)
+            else if (valid == 2)
             {
                 Piece piece = new Piece();
                 piece = positions[initialPosition];
