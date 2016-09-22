@@ -64,43 +64,53 @@ namespace ClassLibrary1
             //use a rules class method
             Rules rules = new Rules(wkInitialRow, positionsMap, moveHistory);
             int valid = rules.testMoveIsValid(positions, initialPosition, finalPosition);
+            Piece piece = new Piece();
             //do the move if valid
-            if (valid == 1)
+
+            if (valid == 2)
             {
-                Piece piece = new Piece();
-                piece = positions[initialPosition];
-                positions[initialPosition] = p;
-                positions[finalPosition] = piece;
-
-                MoveDetails moveDetails = new MoveDetails();
-                moveDetails.fpos = finalPosition;
-                moveDetails.ipos = initialPosition;
-                moveDetails.movenum = movenumber++;
-
-                moveHistory.Add(moveDetails, piece);
-            }
-            else if (valid == 2)
-            {
-                Piece piece = new Piece();
-                piece = positions[initialPosition];
-                positions[initialPosition] = p;
-                positions[finalPosition] = piece;
-
-                //2 := true En passant white left
+                //2 := true En passant white left, remove opponents pawn.
                 int index = Array.IndexOf(positionsMap, initialPosition);
                 positions[positionsMap[index - 1]] = p;
-                //
+            }
+
+            if (valid == 3)
+            {
+                //3 := true En passant white right
+                int index = Array.IndexOf(positionsMap, initialPosition);
+                positions[positionsMap[index + 1]] = p;
+            }
+
+            if (valid == 4)
+            {
+                //4 := true En passant black left
+                int index = Array.IndexOf(positionsMap, initialPosition);
+                positions[positionsMap[index + 1]] = p;
+            }
+
+            if (valid == 5)
+            {
+                //5 := true En passant black right
+                int index = Array.IndexOf(positionsMap, initialPosition);
+                positions[positionsMap[index - 1]] = p;
+            }
+
+            if (valid == 0)
+            {
+                Console.WriteLine("Invalid move.");
+            }
+
+            if (valid!=0)//Move piece & Record move.
+            {
+                piece = positions[initialPosition];
+                positions[initialPosition] = p;
+                positions[finalPosition] = piece;
 
                 MoveDetails moveDetails = new MoveDetails();
                 moveDetails.fpos = finalPosition;
                 moveDetails.ipos = initialPosition;
                 moveDetails.movenum = movenumber++;
-
                 moveHistory.Add(moveDetails, piece);
-            }
-            else
-            {
-                Console.WriteLine("Invalid move.");
             }
 
         }

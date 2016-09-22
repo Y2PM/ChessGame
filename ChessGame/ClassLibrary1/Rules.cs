@@ -33,8 +33,6 @@ namespace ClassLibrary1
             //5 := true En passant black right
             #endregion
 
-
-
             #region White pawn rules
             if (positions[initialPosition].name == Piece.Name.pawn && positions[initialPosition].colour == Piece.Colour.white)
             {
@@ -103,13 +101,11 @@ namespace ClassLibrary1
                             MoveDetails predictedLastMove = new MoveDetails();//Predicted last move in the case of moving 2 spaces forward for En passant.
                             predictedLastMove.fpos = positionsMap[initialIndex - 1];
                             predictedLastMove.ipos = positionsMap[initialIndex + 15];
-                            predictedLastMove.movenum = lastMoveNum;
-
+                            
                             MoveDetails actualLastMove = new MoveDetails();
                             actualLastMove.fpos = movesAndNumbers[lastMoveNum].Substring(2, 2);
                             actualLastMove.ipos = movesAndNumbers[lastMoveNum].Substring(0, 2);
-                            actualLastMove.movenum = lastMoveNum;
-
+                            
                             if (predictedLastMove.fpos == actualLastMove.fpos && predictedLastMove.ipos == actualLastMove.ipos)
                             {
                                 return 2;
@@ -120,20 +116,30 @@ namespace ClassLibrary1
                     {
                         if (positions[positionsMap[initialIndex + 1]].name == Piece.Name.pawn && positions[positionsMap[initialIndex + 1]].colour == Piece.Colour.black)
                         {
+                            MoveDetails predictedLastMove = new MoveDetails();//Predicted last move in the case of moving 2 spaces forward for En passant.
+                            predictedLastMove.fpos = positionsMap[initialIndex + 1];
+                            predictedLastMove.ipos = positionsMap[initialIndex + 17];
 
+                            MoveDetails actualLastMove = new MoveDetails();
+                            actualLastMove.fpos = movesAndNumbers[lastMoveNum].Substring(2, 2);
+                            actualLastMove.ipos = movesAndNumbers[lastMoveNum].Substring(0, 2);
+
+                            if (predictedLastMove.fpos == actualLastMove.fpos && predictedLastMove.ipos == actualLastMove.ipos)
+                            {
+                                return 3;
+                            }
                         }
                     }
                 }
             }
             #endregion
 
-
             #region Black pawn rules
             if (positions[initialPosition].name == Piece.Name.pawn && positions[initialPosition].colour == Piece.Colour.black)
             {
                 int initialIndex = Array.IndexOf(positionsMap, initialPosition);
                 int finalIndex = Array.IndexOf(positionsMap, finalPosition);
-
+                diagonally = "";//reset diagonally
                 //Make rule to say one step forward is allowed for a pawn.
                 if (finalIndex - initialIndex == -8)//one step forward
                 {
@@ -162,14 +168,72 @@ namespace ClassLibrary1
                     }
                     return 1;
                 }
+                //what direction are you moving diagonally?:
+                if (finalIndex - initialIndex == -7)//left forward from black perspective
+                {
+                    diagonally = "left";
+                }
+                if (finalIndex - initialIndex == -9)//right forward from black perspective
+                {
+                    diagonally = "right";
+                }
                 //in the case of taking diagonally:
-                if ((finalIndex - initialIndex == -7 || finalIndex - initialIndex == -9) && positions[finalPosition].colour == Piece.Colour.white)
+                if (diagonally != "" && positions[finalPosition].colour == Piece.Colour.white)
                 {
                     return 1;
                 }
+                //En passant rule:
+                if (diagonally != "" && positions[finalPosition].name == Piece.Name.g)
+                {
+                    //Build a dictionary of moves and numbers from the move history and get the last move number:
+                    Dictionary<int, string> movesAndNumbers = new Dictionary<int, string>(moveHistory.Count);
+                    foreach (var item in moveHistory.Keys)
+                    {
+                        movesAndNumbers.Add(item.movenum, item.ipos + item.fpos);
+                    }
+                    int lastMoveNum = new int();
+                    lastMoveNum = movesAndNumbers.Keys.Max();//
+
+                    if (diagonally == "left")
+                    {
+                        if (positions[positionsMap[initialIndex + 1]].name == Piece.Name.pawn && positions[positionsMap[initialIndex + 1]].colour == Piece.Colour.white)
+                        {
+
+                            MoveDetails predictedLastMove = new MoveDetails();//Predicted last move in the case of moving 2 spaces forward for En passant.
+                            predictedLastMove.fpos = positionsMap[initialIndex + 1];
+                            predictedLastMove.ipos = positionsMap[initialIndex - 15];
+
+                            MoveDetails actualLastMove = new MoveDetails();
+                            actualLastMove.fpos = movesAndNumbers[lastMoveNum].Substring(2, 2);
+                            actualLastMove.ipos = movesAndNumbers[lastMoveNum].Substring(0, 2);
+
+                            if (predictedLastMove.fpos == actualLastMove.fpos && predictedLastMove.ipos == actualLastMove.ipos)
+                            {
+                                return 4;
+                            }
+                        }
+                    }
+                    if (diagonally == "right")
+                    {
+                        if (positions[positionsMap[initialIndex - 1]].name == Piece.Name.pawn && positions[positionsMap[initialIndex - 1]].colour == Piece.Colour.white)
+                        {
+                            MoveDetails predictedLastMove = new MoveDetails();//Predicted last move in the case of moving 2 spaces forward for En passant.
+                            predictedLastMove.fpos = positionsMap[initialIndex - 1];
+                            predictedLastMove.ipos = positionsMap[initialIndex - 17];
+
+                            MoveDetails actualLastMove = new MoveDetails();
+                            actualLastMove.fpos = movesAndNumbers[lastMoveNum].Substring(2, 2);
+                            actualLastMove.ipos = movesAndNumbers[lastMoveNum].Substring(0, 2);
+
+                            if (predictedLastMove.fpos == actualLastMove.fpos && predictedLastMove.ipos == actualLastMove.ipos)
+                            {
+                                return 5;
+                            }
+                        }
+                    }
+                }
             }
             #endregion
-
 
             if (positions[initialPosition].name == Piece.Name.rook)
             {
