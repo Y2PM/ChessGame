@@ -11,13 +11,13 @@ namespace ClassLibrary1
         Dictionary<string, Piece> positions;
         static string[] positionsMap;
         int movenumber;
-        
+
         public Dictionary<MoveDetails, Piece> moveHistory { get; set; }
         int wkInitialRow;
         Piece p;
         public Board()
         {
-            
+
             Dictionary<MoveDetails, Piece> _moveHistory = new Dictionary<MoveDetails, Piece>();//"<This piece, has done this move>".
             Piece _p = new Piece();
             _p.colour = Piece.Colour.w;//white
@@ -30,7 +30,7 @@ namespace ClassLibrary1
             moveHistory = _moveHistory;
             int _movenumber = new int();
             movenumber = _movenumber;//
-            
+
             setupBoard(positions, wkInitialRow);//puts pieces on the board
         }
 
@@ -63,14 +63,33 @@ namespace ClassLibrary1
             //is it a valid move?
             //use a rules class method
             Rules rules = new Rules(wkInitialRow, positionsMap, moveHistory);
-            bool valid = rules.testMoveIsValid(positions, initialPosition, finalPosition);
+            int valid = rules.testMoveIsValid(positions, initialPosition, finalPosition);
             //do the move if valid
-            if (valid)
+            if (valid == 1)
             {
                 Piece piece = new Piece();
                 piece = positions[initialPosition];
                 positions[initialPosition] = p;
                 positions[finalPosition] = piece;
+
+                MoveDetails moveDetails = new MoveDetails();
+                moveDetails.fpos = finalPosition;
+                moveDetails.ipos = initialPosition;
+                moveDetails.movenum = movenumber++;
+
+                moveHistory.Add(moveDetails, piece);
+            }
+            if (valid == 2)
+            {
+                Piece piece = new Piece();
+                piece = positions[initialPosition];
+                positions[initialPosition] = p;
+                positions[finalPosition] = piece;
+
+                //2 := true En passant white left
+                int index = Array.IndexOf(positionsMap, initialPosition);
+                positions[positionsMap[index - 1]] = p;
+                //
 
                 MoveDetails moveDetails = new MoveDetails();
                 moveDetails.fpos = finalPosition;

@@ -11,6 +11,30 @@ namespace ChessGame.Project
     {
         static void Main(string[] args)
         {
+
+            /*
+            MoveDetails predictedLastMove = new MoveDetails();
+            predictedLastMove.fpos = "ab5";
+            predictedLastMove.ipos = "cd6";
+            predictedLastMove.movenum = 3;
+
+            MoveDetails actualLastMove = new MoveDetails();
+            actualLastMove.fpos = "ab5";
+            actualLastMove.ipos = "cd6";
+            actualLastMove.movenum = 3;
+            //Object.ReferenceEquals(predictedLastMove, actualLastMove)
+            if (predictedLastMove.Equals(actualLastMove))
+            {
+                Console.WriteLine("true");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("false");
+                Console.ReadLine();
+            }
+            */
+
             /*
             string str1 = "abc";
             string str2 = "c";

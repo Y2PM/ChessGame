@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    public class MoveDetails
+    public class MoveDetails 
     {
         public string ipos { get; set; }
         public string fpos { get; set; }
